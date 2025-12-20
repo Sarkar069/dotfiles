@@ -23,7 +23,7 @@ set $mod Mod4
 exec_always --no-startup-id wal -R
 
 # Set resolution (added delay to ensure X is ready)
-exec_always --no-startup-id ~/.config/i3/autostart.sh
+exec_always --no-startup-id ~/.config/i3/scripts/autostart.sh
 
 #cursor
 exec_always --no-startup-id sh -c "while true; do xsetroot -cursor_name left_ptr; sleep 5; done"
