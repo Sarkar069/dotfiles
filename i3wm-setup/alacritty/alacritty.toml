@@ -1,0 +1,59 @@
+
+[general]
+import = [
+    "~/.config/alacritty/themes/ashes_dark.toml"
+]
+
+[cursor]
+style = "Beam"
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+size = 11
+
+
+
+
+[window]
+startup_mode = "Windowed"
+dynamic_padding = true
+opacity = 0.8
+
+[window.padding]
+x = 6
+y = 0
+
+[window.dimensions]
+columns = 125
+lines = 30
+
+
+
+
+# Scrolling settings
+[scrolling]
+history = 10000
+multiplier = 3
+
+## key bindings
+[keyboard]
+bindings = [
+      # Font size controls
+    { key = "=", mods = "Control", action = "IncreaseFontSize" },
+    { key = "-", mods = "Control", action = "DecreaseFontSize" },
+    { key = "0", mods = "Control", action = "ResetFontSize" },
+
+    # Fullscreen toggle
+    { key = "F11", action = "ToggleFullscreen" },
+
+
+    # Scroll up/down with Alt+Arrow keys
+    { key = "Up", mods = "Alt", action = "ScrollPageUp" },
+    { key = "Down", mods = "Alt", action = "ScrollPageDown" },
+
+    # Close window
+    { key = "Q", mods = "Control|Shift", action = "Quit" }
+]
+
+
+
