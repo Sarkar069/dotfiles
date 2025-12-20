@@ -1,28 +1,38 @@
-# My i3 Linux Setup
+# 🖥️ Dotfiles
 
-This repository contains my personal Linux configuration files using **i3 window manager**. It’s meant for inspiration and reference.
+Personal Linux dotfiles for **SwayFX (Wayland)** and **i3wm (X11)**, with shared configurations for terminals, notifications, scripts, and utilities.
 
-## Features
+Designed to keep **shared configs reusable** and **WM-specific logic isolated**.
 
-- i3 keybindings and workspace layouts without any bars
-- Picom for compositing effects
-- Rofi/j4-dmenu-desktop launcher
-- [Pywal16](https://github.com/eylles/pywal16) Integration with kitty terminal
-- Alacritty terminal with custom theme
-- Handy scripts
-- Ranger 
-- Fastfetch 
-- .zshrc with powerlevel10k
+---
 
+## ✨ Features
 
-## Notes
+- **SwayFX** (Wayland) setup with swaylock 
+- **i3wm** (X11) setup with picom 
+- Shared configs for:
+  - Alacritty
+  - Kitty
+  - Dunst
+  - Scripts
+- Minimal duplication
+- Clean, readable structure
 
-- .sh scripts may need chmod +x to be executable
+---
 
-- Adjust paths in scripts if needed
+## 📂 Repository Structure
 
+```text
+dotfiles/
+├── wm/
+│   ├── swayfx/        # Wayland WM config
+│   └── i3/            # X11 WM config
+│
+├── dunst/             # notifications 
+├── picom/             # X11 compositor
+├── swaylock/          # Wayland lockscreen
+│
+├── scripts/           # shared scripts
+├── wallpapers/
 
-## Screenshots
-![test1](screenshots/test1.png)
-![test2](screenshots/test2.png)
 
