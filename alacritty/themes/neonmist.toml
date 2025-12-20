@@ -1,0 +1,32 @@
+[colors.primary]
+background = "#12121d"    # ultra dark bluish-black for deep contrast
+foreground = "#cbe0ff"    # soft, readable ice-blue text
+
+[colors.cursor]
+text = "#12121d"
+cursor = "#7dcfff"
+
+[colors.selection]
+text = "#12121d"
+background = "#394260"
+
+[colors.normal]
+black   = "#1c1c2e"
+red     = "#ff5c8f"   # neon pink-red
+green   = "#7fe9a6"   # mint green
+yellow  = "#ffe37e"   # warm neon yellow
+blue    = "#7aa2f7"   # electric blue
+magenta = "#bb9af7"   # soft neon purple
+cyan    = "#7dcfff"   # bright cyan
+white   = "#cbe0ff"   # icy white
+
+[colors.bright]
+black   = "#2e2e3f"
+red     = "#ff6e9c"
+green   = "#8fffb8"
+yellow  = "#fff099"
+blue    = "#8cb5ff"
+magenta = "#caa9ff"
+cyan    = "#9beaff"
+white   = "#e3f1ff"
+
