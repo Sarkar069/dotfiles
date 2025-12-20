@@ -1,0 +1,30 @@
+[global]
+# Font and colors
+font = Hack Nerd Font, Noto Sans Symbols 10
+frame_color = "#89b4faff"
+separator_color = frame
+highlight = "#89b4faff"
+
+# Optional padding and border radius (good with SwayFX corner_radius)
+corner_radius = 8
+padding = 10
+horizontal_padding = 10
+text_icon_padding = 6
+
+# Transparency handled by RGBA colors below
+
+[urgency_low]
+background = "#1e1e2eb3"
+foreground = "#cdd6f4ff"
+frame_color = "#89b4faff"
+
+[urgency_normal]
+background = "#1e1e2eb3"
+foreground = "#cdd6f4ff"
+frame_color = "#89b4faff"
+
+[urgency_critical]
+background = "#1e1e2eb3"
+foreground = "#cdd6f4ff"
+frame_color = "#fab387ff"
+
