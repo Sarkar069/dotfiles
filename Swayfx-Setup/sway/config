@@ -1,0 +1,269 @@
+##########################################
+# SWAY CONFIGURATION (Wayland + Pywal16)
+##########################################
+
+#----------------------#
+# GENERAL + Pywal
+#----------------------#
+set $mod Mod4
+
+font pango:JetBrainsMono Nerd Font 10
+#for_window [class="^.*"] border pixel 4 
+exec_always --no-startup-id wal -R
+include "$HOME/.cache/wal/colors-sway"
+output * bg $wallpaper fill
+
+#--------------------------------------------#
+# Focused window colors (Bhagva theme)
+#--------------------------------------------#
+
+client.focused          #FF9933 #FF9933 #FFFFFF #FF9933 #FF9933
+#client.focused           #803300 #803300 #CCCCCC #803300 #803300
+#client.unfocused        #552200 #552200 #999999 #552200 #552200
+#client.urgent           #FF0000 #FF0000 #FFFFFF #FF0000 #FF0000
+
+
+#---------------------------------------------------------------#
+# Thunar File chooser dialogs (LibreWolf and others)
+#---------------------------------------------------------------#
+for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 900 550, move position center
+
+#----------------------#
+# LOOK & FEEL
+#----------------------#
+gaps inner 1
+gaps outer 1
+default_border pixel 2
+default_floating_border none
+floating_modifier $mod
+
+
+#----------------------#
+# STARTUP
+#----------------------#
+
+# Start EasyEffects (Audio EQ)
+exec --no-startup-id easyeffects --gapplication-service
+
+# swaylock 
+exec swayidle -w \
+    timeout 1800 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f -c 000000'
+
+
+exec_always --no-startup-id ~/.config/sway/scripts/lock.sh
+
+# Clipboard manager (Wayland-native)
+exec_always --no-startup-id ~/.config/sway/scripts/autostart.sh
+
+# Notification daemon
+exec --no-startup-id dunst
+
+#----------------------#
+# APPLICATION BINDINGS
+#----------------------#
+bindsym $mod+Return exec foot
+
+bindsym $mod+q kill
+
+# Battery & Time scripts
+bindsym $mod+b exec --no-startup-id ~/.config/sway/scripts/battery-status.sh
+bindsym $mod+t exec --no-startup-id ~/.config/sway/scripts/show-time.sh
+
+# Toggle Wi-Fi
+bindsym $mod+Shift+n exec --no-startup-id ~/.config/sway/scripts/toggle-wifi.sh
+
+# check show-workspace.sh
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/sway/scripts/show-workspace.sh
+
+
+# Application launcher (fuzzel)
+bindsym $mod+d exec --no-startup-id fuzzel
+
+# Projects
+bindsym $mod+p exec --no-startup-id ~/.config/sway/scripts/projects.sh
+
+# Emoji picker
+bindsym $mod+m exec --no-startup-id ~/.config/sway/scripts/emojis.sh
+
+# Suspend
+bindsym $mod+Shift+p exec ~/.config/sway/scripts/lock_and_suspend.sh
+
+# Suspend
+bindsym $mod+v exec --no-startup-id copyq show
+
+#screenshot 
+bindsym $mod+Shift+s exec sh -c 'mkdir -p ~/Pictures/Screenshots && grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png && notify-send "Screenshot taken"'
+
+
+#----------------------#
+# MEDIA & BRIGHTNESS
+#----------------------#
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+#----------------------#
+# WINDOW CONTROL
+#----------------------#
+# Focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#----------------------#
+# LAYOUTS
+#----------------------#
+bindsym $mod+h split h
+bindsym $mod+Shift+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+
+#----------------------#
+# WORKSPACES
+#----------------------#
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch workspaces
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move containers
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+#----------------------#
+# RESIZE MODE
+#----------------------#
+mode "resize" {
+    bindsym j resize shrink width 10px
+    bindsym k resize grow height 10px
+    bindsym l resize shrink height 10px
+    bindsym semicolon resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#----------------------#
+# RELOAD / RESTART / EXIT
+#----------------------#
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec swaynag -t warning -m "Exit Sway session?" -B "Yes, exit" "swaymsg exit"
+
+# ==============================#
+# 🔮 BLUR SETTINGS
+# ==============================%
+blur enable
+blur_xray disable
+blur_passes 2
+blur_radius 4  
+blur_noise 0.05 
+blur_brightness 0.95
+blur_contrast 0.9
+blur_saturation 0.8
+
+# ==============================
+# 🌈 WINDOW CORNERS
+# ==============================
+#corner_radius 15
+
+# ==============================
+# 🌫️ WINDOW SHADOWS
+# ==============================
+shadows disable
+#shadows_on_csd disable
+#shadow_blur_radius 18                 # Medium blur radius (faster than 25+)
+#shadow_color #00000066                # Medium soft shadow
+#shadow_offset 0 5                     # Slight drop
+#shadow_inactive_color #00000044       # Softer shadow for inactive windows
+
+
+# ==============================
+# 💡 DIM INACTIVE WINDOWS
+# ==============================
+#default_dim_inactive 0.4
+#dim_inactive_colors.unfocused #000000AA
+#dim_inactive_colors.urgent #990000FF
+
+# # Dunst (notifications) blur and effects
+layer_effects "notifications" {
+    blur enable;
+    blur_xray disable;
+    blur_ignore_transparent enable;
+    corner_radius 8;
+}
+
+# fuzzel blur and effects
+layer_effects "launcher" {
+    blur enable;
+    blur_xray disable;
+    blur_ignore_transparent enable;
+}
+
+
+# Enable XWayland for fallback (but prefer native Wayland)
+xwayland enable
+
+# Set environment variables for Wayland apps (like VS Code)
+exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Start the portal service (xdg-desktop-portal-wlr for Sway)
+exec xdg-desktop-portal-wlr
+
+include /etc/sway/config.d
+
