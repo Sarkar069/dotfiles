@@ -26,13 +26,15 @@ Designed to keep **shared configs reusable** and **WM-specific logic isolated**.
 dotfiles/
 ├── wm/
 │   ├── swayfx/        # Wayland WM config
+│   │   └── scripts/   # only works on wayland
 │   └── i3/            # X11 WM config
+│       └── scripts/   # only works on x11
 │
 ├── dunst/             # notifications 
 ├── picom/             # X11 compositor
 ├── swaylock/          # Wayland lockscreen
 │
 ├── scripts/           # shared scripts
-├── wallpapers/
+└── wallpapers/
 
 
