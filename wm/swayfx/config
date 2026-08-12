@@ -216,6 +216,12 @@ blur_brightness 0.95
 blur_contrast 0.9
 blur_saturation 0.8
 
+# # =========================
+# # 💅 Animation 
+# # =========================
+animation_duration_ms 250
+
+
 # ==============================
 # 🌈 WINDOW CORNERS
 # ==============================
